@@ -22,11 +22,12 @@ COCO val HRNet-W48 384x288 keypint AP 76.9
 
 Paddle 复现：
 COCO val HRNet-W32 256x192 keypint AP 76.7
+
 COCO val HRNet-W48 384x288 keypint AP 78.5
 
 [模型训练日志及权重](https://pan.baidu.com/s/1N84NEcnRGyjkwerWanz3Gw#isr6)
 ## 3. 数据集
-目前KeyPoint模型支持[COCO](https://cocodataset.org/#keypoints-2017)数据集和[MPII](http://human-pose.mpi-inf.mpg.de/#overview)数据集，数据集的准备方式请参考[关键点数据准备](docs/tutorials/PrepareKeypointDataSet_cn.md)。
+[COCO](https://cocodataset.org/#keypoints-2017)数据集的准备方式请参考[关键点数据准备](docs/tutorials/PrepareKeypointDataSet_cn.md)。
 
 [对应 AI Studio 数据集](https://aistudio.baidu.com/aistudio/datasetdetail/142126)
 ## 4. 环境依赖
