@@ -31,7 +31,7 @@ sys.path.insert(0, parent_path)
 
 from preprocess import preprocess, NormalizeImage, Permute
 from keypoint_preprocess import EvalAffine, TopDownEvalAffine, expand_crop
-from keypoint_postprocess import HrHRNetPostProcess, HRNetPostProcess
+from keypoint_postprocess import HrHRNetPostProcess, HRNetPostProcess, SimDRPostProcess
 from visualize import visualize_pose
 from paddle.inference import Config
 from paddle.inference import create_predictor
@@ -42,7 +42,8 @@ from infer import Detector, get_test_images, print_arguments
 # Global dictionary
 KEYPOINT_SUPPORT_MODELS = {
     'HigherHRNet': 'keypoint_bottomup',
-    'HRNet': 'keypoint_topdown'
+    'HRNet': 'keypoint_topdown',
+    'HRNetSimDR': 'keypoint_topdown_simdr',
 }
 
 
@@ -140,6 +141,17 @@ class KeyPointDetector(Detector):
             results['keypoint'] = kpts
             results['score'] = scores
             return results
+        elif KEYPOINT_SUPPORT_MODELS[
+                self.pred_config.arch] == 'keypoint_topdown_simdr':
+            results = {}
+            imshape = inputs['im_shape'][:, ::-1]
+            center = np.round(imshape / 2.)
+            scale = imshape / 200.
+            keypoint_postprocess = SimDRPostProcess(use_dark=self.use_dark)
+            kpts, scores = keypoint_postprocess(np_heatmap, center, scale)
+            results['keypoint'] = kpts
+            results['score'] = scores
+            return results
         else:
             raise ValueError("Unsupported arch: {}, expect {}".format(
                 self.pred_config.arch, KEYPOINT_SUPPORT_MODELS))
@@ -161,6 +173,10 @@ class KeyPointDetector(Detector):
             output_names = self.predictor.get_output_names()
             heatmap_tensor = self.predictor.get_output_handle(output_names[0])
             np_heatmap = heatmap_tensor.copy_to_cpu()
+            if KEYPOINT_SUPPORT_MODELS[
+                self.pred_config.arch] == 'keypoint_topdown_simdr':
+                heatmap_tensor = self.predictor.get_output_handle(output_names[1])
+                np_heatmap = [np_heatmap, heatmap_tensor.copy_to_cpu()]
             if self.pred_config.tagmap:
                 masks_tensor = self.predictor.get_output_handle(output_names[1])
                 heat_k = self.predictor.get_output_handle(output_names[2])

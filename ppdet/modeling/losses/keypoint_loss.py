@@ -20,10 +20,111 @@ from itertools import cycle, islice
 from collections import abc
 import paddle
 import paddle.nn as nn
+import paddle.nn.functional as F
 
 from ppdet.core.workspace import register, serializable
 
-__all__ = ['HrHRNetLoss', 'KeyPointMSELoss']
+__all__ = ['HrHRNetLoss', 'KeyPointMSELoss','KLDiscretLoss', 'KeyPointCELoss']
+
+@register
+@serializable
+class KLDiscretLoss(nn.Layer):
+    def __init__(self, use_target_weight=True, loss_scale=0.):
+        super(KLDiscretLoss, self).__init__()
+        """
+        KLDiscretLoss layer
+
+        Args:
+            use_target_weight (bool): whether to use target weight
+        """
+        self.LogSoftmax = nn.LogSoftmax(axis=1) #[B,LOGITS]
+        self.criterion_ = nn.KLDivLoss(reduction='none')
+        self.use_target_weight = use_target_weight
+
+    def criterion(self, dec_outs, labels):
+        scores = self.LogSoftmax(dec_outs)
+        loss = paddle.mean(self.criterion_(scores, labels), axis=1)
+        return loss
+
+    def forward(self, output, records):
+        output_x, output_y = output
+        target_x, target_y = records['target']
+        target_weight = records['target_weight']
+        batch_size = output_x.shape[0]
+        num_joints = output_x.shape[1]
+        loss = 0
+
+        for idx in range(num_joints):
+            coord_x_pred = output_x[:,idx].squeeze()
+            coord_y_pred = output_y[:,idx].squeeze()
+            coord_x_gt = target_x[:,idx].squeeze()
+            coord_y_gt = target_y[:,idx].squeeze()
+            weight = target_weight[:,idx].squeeze()
+            if self.use_target_weight:
+                loss += (self.criterion(coord_x_pred, coord_x_gt).multiply(weight).mean())
+                loss += (self.criterion(coord_y_pred, coord_y_gt).multiply(weight).mean())
+            else:
+                loss += (self.criterion(coord_x_pred, coord_x_gt).mean())
+                loss += (self.criterion(coord_y_pred, coord_y_gt).mean())
+        return {'loss': loss / num_joints}
+
+@register
+@serializable
+class KeyPointCELoss(nn.Layer):
+    def __init__(self, use_target_weight=True, loss_scale=0.5, label_smooth=0.1, space_aware=True):
+        """
+        KeyPointCELoss layer
+
+        Args:
+            use_target_weight (bool): whether to use target weight
+        """
+        super(KeyPointCELoss, self).__init__()
+        self.criterion = self.cls_loss if label_smooth>0 else nn.CrossEntropyLoss(reduction='mean')
+        self.use_target_weight = use_target_weight
+        self.loss_scale = loss_scale
+        self.label_smooth = label_smooth
+        self.space_aware = space_aware
+
+    def cls_loss(self, pcls, tcls):
+        if self.label_smooth:
+            delta = min(1. / self.num_classes, 1. / 40)
+            pos, neg = 1 - delta, delta
+            # 1 for positive, 0 for negative
+            tcls = pos * paddle.cast(
+                tcls > 0., dtype=tcls.dtype) + neg * paddle.cast(
+                    tcls <= 0., dtype=tcls.dtype)
+
+        loss_cls = F.binary_cross_entropy_with_logits(
+            pcls, tcls, reduction='none')
+        return loss_cls
+
+    def forward(self, output, records):
+        output_x, output_y = output
+        target_x, target_y = records['target']
+        target_weight = records['target_weight']
+        batch_size = output_x.shape[0]
+        num_joints = output_x.shape[1]
+        output_x = output_x.split(num_joints, 1)
+        output_y = output_y.split(num_joints, 1)
+        target_x = target_x.split(num_joints, 1)
+        target_y = target_y.split(num_joints, 1)
+        loss = 0
+        for idx in range(num_joints):
+            heatmap_pred_x = output_x[idx].squeeze()
+            heatmap_gt_x = target_x[idx].squeeze()
+            heatmap_pred_y = output_y[idx].squeeze()
+            heatmap_gt_y = target_y[idx].squeeze()
+            if self.use_target_weight:
+                loss += self.loss_scale * self.criterion(
+                    heatmap_pred_x.multiply(target_weight[:, idx]),
+                    heatmap_gt_x.multiply(target_weight[:, idx]))
+                loss += self.loss_scale * self.criterion(
+                    heatmap_pred_y.multiply(target_weight[:, idx]),
+                    heatmap_gt_y.multiply(target_weight[:, idx]))
+            else:
+                loss += self.loss_scale * self.criterion(heatmap_pred_x, heatmap_gt_x)
+                loss += self.loss_scale * self.criterion(heatmap_pred_y, heatmap_gt_y)
+        return {'loss': loss / num_joints}
 
 
 @register

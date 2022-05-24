@@ -49,6 +49,7 @@ __all__ = [
     'ToHeatmapsTopDown_UDP',
     'TopDownEvalAffine',
     'AugmentationbyInformantionDropping',
+    'ToSimDRTopDown',
 ]
 
 
@@ -860,6 +861,71 @@ class ToHeatmapsTopDown_UDP(object):
                 target[joint_id][img_y[0]:img_y[1], img_x[0]:img_x[1]] = g[g_y[
                     0]:g_y[1], g_x[0]:g_x[1]]
         records['target'] = target
+        records['target_weight'] = target_weight
+        del records['joints'], records['joints_vis']
+
+        return records
+
+@register_keypointop
+class ToSimDRTopDown(object):
+    """to generate the decoupled gaussian heat vector of keypoint
+
+    Args:
+        imsize (list): [w, h] output heatmap's size
+        sigma (float): the std of gaussin kernel genereted
+        split_ratio:(float): the split_ratio of target
+        records(dict): the dict contained the image and coords
+
+    Returns:
+        records (dict): contain the heatmaps used to heatmaploss
+
+    """
+
+    def __init__(self, sigma, split_ratio, norm_target=False):
+        super(ToSimDRTopDown, self).__init__()
+        self.sigma = sigma
+        self.split_ratio = split_ratio
+        self.norm_target = norm_target
+
+
+    def __call__(self, records):
+        joints = records['joints']
+        joints_vis = records['joints_vis']
+        num_joints = joints.shape[0]
+        imsize = np.array(
+            [records['image'].shape[1], records['image'].shape[0]])
+        target_weight = np.ones((num_joints, 1), dtype=np.float32)
+        target_weight[:, 0] = joints_vis[:, 0]
+        target_w = np.zeros((num_joints, int(imsize[0]*self.split_ratio)), dtype=np.float32)
+        target_h = np.zeros((num_joints, int(imsize[1]*self.split_ratio)), dtype=np.float32)
+        tmp_size = self.sigma * 3
+        for joint_id in range(num_joints):
+            mu_x = joints[joint_id][0]
+            mu_y = joints[joint_id][1]
+            # Check that any part of the gaussian is in-bounds
+            ul = [int(mu_x - tmp_size), int(mu_y - tmp_size)]
+            br = [int(mu_x + tmp_size + 1), int(mu_y + tmp_size + 1)]
+            if ul[0] >= imsize[0] or ul[1] >= imsize[1] or br[
+                    0] < 0 or br[1] < 0:
+                # If not, just return the image as is
+                target_weight[joint_id] = 0
+                continue
+            # # Generate gaussian
+            mu_x *= self.split_ratio
+            mu_y *= self.split_ratio
+            x = np.arange(0, int(imsize[0]*self.split_ratio), 1, np.float32)
+            y = np.arange(0, int(imsize[1]*self.split_ratio), 1, np.float32)
+            #mu_x = mu_y = size // 2
+            
+            # The gaussian is not normalized, we want the center value to equal 1
+            v = target_weight[joint_id]
+            if v > 0.5:
+                target_w[joint_id] = np.exp(-((x - mu_x)**2) / (2 * self.sigma**2))
+                target_h[joint_id] = np.exp(-((y - mu_y)**2) / (2 * self.sigma**2))
+            if self.norm_target:
+                target_w = target_w/(self.sigma*np.sqrt(np.pi*2))
+                target_h = target_h/(self.sigma*np.sqrt(np.pi*2))
+        records['target'] = [target_w, target_h]
         records['target_weight'] = target_weight
         del records['joints'], records['joints_vis']
 

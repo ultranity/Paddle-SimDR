@@ -51,7 +51,7 @@ TRT_MIN_SUBGRAPH = {
     'YOLOX': 8,
 }
 
-KEYPOINT_ARCH = ['HigherHRNet', 'TopDownHRNet']
+KEYPOINT_ARCH = ['HigherHRNet', 'TopDownHRNet', 'TopDownHRNetSimDR']
 MOT_ARCH = ['DeepSORT', 'JDE', 'FairMOT', 'ByteTrack']
 
 
@@ -149,6 +149,9 @@ def _dump_infer_config(config, path, image_shape, model):
             arch_state = True
             break
 
+    if infer_arch == 'TopDownHRNetSimDR':
+            infer_cfg['arch'] = 'HRNetSimDR'
+    
     if infer_arch == 'YOLOX':
         infer_cfg['arch'] = infer_arch
         infer_cfg['min_subgraph_size'] = TRT_MIN_SUBGRAPH[infer_arch]

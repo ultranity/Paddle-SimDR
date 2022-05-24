@@ -347,6 +347,135 @@ class HRNetPostProcess(object):
                 maxvals, axis=1)
 
 
+class SimDRPostProcess(object):
+    def __init__(self, use_dark=True):
+        self.use_dark = use_dark
+        self.postprocess = True
+
+    def get_max_preds(self, heatmaps):
+        '''get predictions from score maps
+
+        Args:
+            heatmaps: [numpy.ndarray([batch_size, num_joints, width]), numpy.ndarray([batch_size, num_joints, height])]
+
+        Returns:
+            preds: numpy.ndarray([batch_size, num_joints, 2]), keypoints coords
+            maxvals: numpy.ndarray([batch_size, num_joints, 2]), the maximum confidence of the keypoints
+        '''
+        assert isinstance(heatmaps,
+                          list), 'heatmaps should be list of numpy.ndarray'
+        assert heatmaps[0].ndim == 3, 'batch_images should be 3-ndim'
+        assert heatmaps[1].ndim == 3, 'batch_images should be 3-ndim'
+
+        #batch_size = heatmaps[0].shape[0]
+        #num_joints = heatmaps[0].shape[1]
+        #width = heatmaps[0].shape[2]
+        #height = heatmaps[1].shape[2]
+        idx_x = np.argmax(heatmaps[0], 2)
+        idx_y = np.argmax(heatmaps[1], 2)
+        preds = np.stack([idx_x, idx_y], -1).astype(np.float32)
+        
+        maxvals_x = np.amax(heatmaps[0], 2, keepdims=True)
+        maxvals_y = np.amax(heatmaps[1], 2, keepdims=True)
+        maxvals = np.maximum(maxvals_x, maxvals_y)
+
+        return preds, maxvals
+
+    def mask_preds(self, preds, maxvals):
+        #pred_mask = np.concatenate([np.greater(maxvals_x, 0.0), np.greater(maxvals_y, 0.0)], -1)
+        pred_mask = np.tile(np.greater(maxvals, 0.0), (1, 1, 2))
+        pred_mask = pred_mask.astype(np.float32)
+        preds *= pred_mask
+        return preds, maxvals
+
+    def dark_parse(self, hm, coord):
+        width = hm.shape[0]
+        px = round(coord)
+        if 1 < px < width - 2:
+            #dx = 0.5 * (hm[px + 1] - hm[px - 1])
+            #dxx = 0.25 * (hm[px + 2] - 2 * hm[px] + hm[px - 2])
+            #dx = 2 * (hm[px + 1] - hm[px - 1])
+            #dxx = (hm[px + 2] - 2 * hm[px] + hm[px - 2])
+            #coord -= dx/dxx if dxx !=0 else 0
+            delta = 2 * (hm[px + 1] - hm[px - 1])/(hm[px + 2] - 2 * hm[px] + hm[px - 2])
+            coord -= delta if np.abs(delta)<1 else 0
+        return coord
+
+    def gaussian_blur(self, heatmap, kernel):
+        border = (kernel - 1) // 2
+        batch_size = heatmap.shape[0]
+        num_joints = heatmap.shape[1]
+        size = heatmap.shape[2]
+        for i in range(batch_size):
+            for j in range(num_joints):
+                origin_max = np.max(heatmap[i, j])
+                dr = np.zeros((size + 2 * border))
+                dr[border:-border] = heatmap[i, j]
+                dr = cv2.GaussianBlur(dr, (1, kernel), 0).squeeze()
+                heatmap[i, j] = dr[border:-border]
+                heatmap[i, j] *= origin_max / np.max(heatmap[i, j])
+        return heatmap
+
+    def dark_postprocess(self, hm, coords, kernelsize):
+        '''DARK postpocessing, Zhang et al. Distribution-Aware Coordinate
+        Representation for Human Pose Estimation (CVPR 2020).
+        
+        hm (list): The predicted heatmaps [numpy.ndarray([batch_size, num_joints, width]), numpy.ndarray([batch_size, num_joints, height])]
+        coords: numpy.ndarray([batch_size, num_joints, 2])
+        '''
+
+        hm = [np.log(np.maximum(self.gaussian_blur(hm[0], kernelsize), 1e-10)), 
+                np.log(np.maximum(self.gaussian_blur(hm[1], kernelsize), 1e-10))]
+        for n in range(coords.shape[0]):
+            for p in range(coords.shape[1]):
+                coords[n, p, 0] = self.dark_parse(hm[0][n][p], coords[n][p][0])
+                coords[n, p, 1] = self.dark_parse(hm[1][n][p], coords[n][p][1])
+        return coords
+
+    def get_final_preds(self, output, center, scale, kernelsize=3):
+        """the highest heatvalue location with a quarter offset in the
+        direction from the highest response to the second highest response.
+
+        Args:
+            heatmaps (list): The predicted heatmaps [numpy.ndarray([batch_size, num_joints, width]), numpy.ndarray([batch_size, num_joints, height])]
+            center (numpy.ndarray): The boxes center
+            scale (numpy.ndarray): The scale factor
+
+        Returns:
+            preds: numpy.ndarray([batch_size, num_joints, 2]), keypoints coords
+            maxvals: numpy.ndarray([batch_size, num_joints, 1]), the maximum confidence of the keypoints
+        """
+        output = [output[0],output[1]]
+        coords, maxvals = self.get_max_preds(output)
+        #coords, maxvals = self.mask_preds(coords, maxvals)
+        width = output[0].shape[2]
+        height = output[1].shape[2]
+        if self.postprocess:
+            if self.use_dark:
+                coords = self.dark_postprocess(output, coords, kernelsize)
+            else:
+                for n in range(coords.shape[0]):
+                    for p in range(coords.shape[1]):
+                        hm_x = output[0][n][p]
+                        hm_y = output[1][n][p]
+                        px = int(math.floor(coords[n][p][0] + 0.5))
+                        py = int(math.floor(coords[n][p][1] + 0.5))
+                        if 1 < px < width - 1 and 1 < py < height - 1:
+                            coords[n][p][0] += np.sign(hm_x[px + 1] - hm_x[px - 1]) * .25
+                            coords[n][p][1]  += np.sign(hm_y[py + 1] - hm_y[py - 1]) * .25
+        preds = coords.copy()
+
+        # Transform back
+        for i in range(coords.shape[0]):
+            preds[i] = transform_preds(coords[i], center[i], scale[i], [width, height])
+        return preds, maxvals
+
+    def __call__(self, output, center, scale):
+        preds, maxvals = self.get_final_preds(output, center, scale)
+
+        return np.concatenate((preds, maxvals), axis=-1),\
+            np.mean(maxvals, axis=1)
+
 def transform_preds(coords, center, scale, output_size):
     target_coords = np.zeros(coords.shape)
     trans = get_affine_transform(center, scale * 200, 0, output_size, inv=1)

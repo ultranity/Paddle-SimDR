@@ -1,0 +1,493 @@
+ppdet python_infer: simdr_hrnet_w48_384x288
+/opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/paddle/tensor/creation.py:130: DeprecationWarning: `np.object` is a deprecated alias for the builtin `object`. To silence this warning, use `object` by itself. Doing this will not modify any behavior and is safe. 
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  if data.dtype == np.object:
+Warning: import ppdet from source directory without installing, run 'python setup.py install' to install ppdet firstly
+loading annotations into memory...
+Done (t=0.00s)
+creating index...
+index created!
+W0523 17:34:59.947908 21413 device_context.cc:447] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 11.2, Runtime API Version: 10.1
+W0523 17:34:59.952596 21413 device_context.cc:465] device: 0, cuDNN Version: 7.6.
+[05/23 17:35:06] ppdet.utils.checkpoint INFO: Finish loading model weights: /home/aistudio/.cache/paddle/weights/Trunc_HRNet_W48_C_pretrained.pdparams
+[05/23 17:35:07] ppdet.engine INFO: Epoch: [0] [ 0/80] learning_rate: 0.000000 loss: 0.183569 eta: 0:00:58 batch_cost: 0.7364 data_cost: 0.0004 ips: 2.7159 images/s
+[05/23 17:35:07] ppdet.engine INFO: Epoch: [0] [ 1/80] learning_rate: 0.000000 loss: 0.173220 eta: 0:00:41 batch_cost: 0.3132 data_cost: 0.0002 ips: 6.3856 images/s
+[05/23 17:35:07] ppdet.engine INFO: Epoch: [0] [ 2/80] learning_rate: 0.000000 loss: 0.095194 eta: 0:00:34 batch_cost: 0.2741 data_cost: 0.0002 ips: 7.2957 images/s
+[05/23 17:35:08] ppdet.engine INFO: Epoch: [0] [ 3/80] learning_rate: 0.000000 loss: 0.061193 eta: 0:00:30 batch_cost: 0.2670 data_cost: 0.0002 ips: 7.4896 images/s
+[05/23 17:35:08] ppdet.engine INFO: Epoch: [0] [ 4/80] learning_rate: 0.000000 loss: 0.129193 eta: 0:00:28 batch_cost: 0.2651 data_cost: 0.0002 ips: 7.5435 images/s
+[05/23 17:35:08] ppdet.engine INFO: Epoch: [0] [ 5/80] learning_rate: 0.000001 loss: 0.146009 eta: 0:00:26 batch_cost: 0.2687 data_cost: 0.0002 ips: 7.4434 images/s
+[05/23 17:35:08] ppdet.engine INFO: Epoch: [0] [ 6/80] learning_rate: 0.000001 loss: 0.132987 eta: 0:00:25 batch_cost: 0.2685 data_cost: 0.0002 ips: 7.4490 images/s
+[05/23 17:35:09] ppdet.engine INFO: Epoch: [0] [ 7/80] learning_rate: 0.000001 loss: 0.156384 eta: 0:00:24 batch_cost: 0.2708 data_cost: 0.0002 ips: 7.3867 images/s
+[05/23 17:35:09] ppdet.engine INFO: Epoch: [0] [ 8/80] learning_rate: 0.000001 loss: 0.169983 eta: 0:00:23 batch_cost: 0.2819 data_cost: 0.0002 ips: 7.0938 images/s
+[05/23 17:35:09] ppdet.engine INFO: Epoch: [0] [ 9/80] learning_rate: 0.000001 loss: 0.095189 eta: 0:00:23 batch_cost: 0.3711 data_cost: 0.0002 ips: 5.3896 images/s
+[05/23 17:35:10] ppdet.engine INFO: Epoch: [0] [10/80] learning_rate: 0.000001 loss: 0.129184 eta: 0:00:23 batch_cost: 0.3447 data_cost: 0.0002 ips: 5.8028 images/s
+[05/23 17:35:10] ppdet.engine INFO: Epoch: [0] [11/80] learning_rate: 0.000001 loss: 0.197182 eta: 0:00:22 batch_cost: 0.2935 data_cost: 0.0003 ips: 6.8146 images/s
+[05/23 17:35:10] ppdet.engine INFO: Epoch: [0] [12/80] learning_rate: 0.000001 loss: 0.132149 eta: 0:00:22 batch_cost: 0.2949 data_cost: 0.0002 ips: 6.7816 images/s
+[05/23 17:35:11] ppdet.engine INFO: Epoch: [0] [13/80] learning_rate: 0.000001 loss: 0.121121 eta: 0:00:21 batch_cost: 0.3229 data_cost: 0.0002 ips: 6.1945 images/s
+[05/23 17:35:11] ppdet.engine INFO: Epoch: [0] [14/80] learning_rate: 0.000001 loss: 0.200688 eta: 0:00:21 batch_cost: 0.2690 data_cost: 0.0002 ips: 7.4353 images/s
+[05/23 17:35:11] ppdet.engine INFO: Epoch: [0] [15/80] learning_rate: 0.000002 loss: 0.065130 eta: 0:00:20 batch_cost: 0.2777 data_cost: 0.0002 ips: 7.2017 images/s
+[05/23 17:35:12] ppdet.engine INFO: Epoch: [0] [16/80] learning_rate: 0.000002 loss: 0.142797 eta: 0:00:20 batch_cost: 0.3213 data_cost: 0.0002 ips: 6.2249 images/s
+[05/23 17:35:12] ppdet.engine INFO: Epoch: [0] [17/80] learning_rate: 0.000002 loss: 0.095191 eta: 0:00:20 batch_cost: 0.3326 data_cost: 0.0002 ips: 6.0129 images/s
+[05/23 17:35:12] ppdet.engine INFO: Epoch: [0] [18/80] learning_rate: 0.000002 loss: 0.101995 eta: 0:00:19 batch_cost: 0.2777 data_cost: 0.0002 ips: 7.2031 images/s
+[05/23 17:35:12] ppdet.engine INFO: Epoch: [0] [19/80] learning_rate: 0.000002 loss: 0.142780 eta: 0:00:19 batch_cost: 0.2758 data_cost: 0.0002 ips: 7.2509 images/s
+[05/23 17:35:13] ppdet.engine INFO: Epoch: [0] [20/80] learning_rate: 0.000002 loss: 0.162710 eta: 0:00:18 batch_cost: 0.3001 data_cost: 0.0002 ips: 6.6653 images/s
+[05/23 17:35:13] ppdet.engine INFO: Epoch: [0] [21/80] learning_rate: 0.000002 loss: 0.156390 eta: 0:00:18 batch_cost: 0.2923 data_cost: 0.0002 ips: 6.8423 images/s
+[05/23 17:35:13] ppdet.engine INFO: Epoch: [0] [22/80] learning_rate: 0.000002 loss: 0.098745 eta: 0:00:18 batch_cost: 0.2869 data_cost: 0.0002 ips: 6.9708 images/s
+[05/23 17:35:14] ppdet.engine INFO: Epoch: [0] [23/80] learning_rate: 0.000002 loss: 0.129187 eta: 0:00:17 batch_cost: 0.3074 data_cost: 0.0002 ips: 6.5071 images/s
+[05/23 17:35:14] ppdet.engine INFO: Epoch: [0] [24/80] learning_rate: 0.000002 loss: 0.149575 eta: 0:00:17 batch_cost: 0.3733 data_cost: 0.0002 ips: 5.3581 images/s
+[05/23 17:35:15] ppdet.engine INFO: Epoch: [0] [25/80] learning_rate: 0.000003 loss: 0.095803 eta: 0:00:18 batch_cost: 0.6783 data_cost: 0.0002 ips: 2.9487 images/s
+[05/23 17:35:15] ppdet.engine INFO: Epoch: [0] [26/80] learning_rate: 0.000003 loss: 0.098187 eta: 0:00:17 batch_cost: 0.4268 data_cost: 0.0003 ips: 4.6865 images/s
+[05/23 17:35:16] ppdet.engine INFO: Epoch: [0] [27/80] learning_rate: 0.000003 loss: 0.210785 eta: 0:00:17 batch_cost: 0.4113 data_cost: 0.0003 ips: 4.8631 images/s
+[05/23 17:35:16] ppdet.engine INFO: Epoch: [0] [28/80] learning_rate: 0.000003 loss: 0.095191 eta: 0:00:17 batch_cost: 0.3427 data_cost: 0.0002 ips: 5.8364 images/s
+[05/23 17:35:16] ppdet.engine INFO: Epoch: [0] [29/80] learning_rate: 0.000003 loss: 0.122382 eta: 0:00:17 batch_cost: 0.2821 data_cost: 0.0002 ips: 7.0903 images/s
+[05/23 17:35:16] ppdet.engine INFO: Epoch: [0] [30/80] learning_rate: 0.000003 loss: 0.115590 eta: 0:00:16 batch_cost: 0.3178 data_cost: 0.0002 ips: 6.2926 images/s
+[05/23 17:35:17] ppdet.engine INFO: Epoch: [0] [31/80] learning_rate: 0.000003 loss: 0.121227 eta: 0:00:16 batch_cost: 0.2725 data_cost: 0.0002 ips: 7.3404 images/s
+[05/23 17:35:17] ppdet.engine INFO: Epoch: [0] [32/80] learning_rate: 0.000003 loss: 0.098747 eta: 0:00:15 batch_cost: 0.2775 data_cost: 0.0002 ips: 7.2079 images/s
+[05/23 17:35:17] ppdet.engine INFO: Epoch: [0] [33/80] learning_rate: 0.000003 loss: 0.095189 eta: 0:00:15 batch_cost: 0.2863 data_cost: 0.0002 ips: 6.9859 images/s
+[05/23 17:35:18] ppdet.engine INFO: Epoch: [0] [34/80] learning_rate: 0.000003 loss: 0.085352 eta: 0:00:15 batch_cost: 0.2614 data_cost: 0.0002 ips: 7.6502 images/s
+[05/23 17:35:18] ppdet.engine INFO: Epoch: [0] [35/80] learning_rate: 0.000004 loss: 0.098993 eta: 0:00:14 batch_cost: 0.2606 data_cost: 0.0002 ips: 7.6740 images/s
+[05/23 17:35:18] ppdet.engine INFO: Epoch: [0] [36/80] learning_rate: 0.000004 loss: 0.115583 eta: 0:00:14 batch_cost: 0.2758 data_cost: 0.0002 ips: 7.2518 images/s
+[05/23 17:35:18] ppdet.engine INFO: Epoch: [0] [37/80] learning_rate: 0.000004 loss: 0.141787 eta: 0:00:13 batch_cost: 0.3106 data_cost: 0.0002 ips: 6.4401 images/s
+[05/23 17:35:19] ppdet.engine INFO: Epoch: [0] [38/80] learning_rate: 0.000004 loss: 0.074798 eta: 0:00:13 batch_cost: 0.2766 data_cost: 0.0002 ips: 7.2304 images/s
+[05/23 17:35:19] ppdet.engine INFO: Epoch: [0] [39/80] learning_rate: 0.000004 loss: 0.231170 eta: 0:00:13 batch_cost: 0.2643 data_cost: 0.0002 ips: 7.5679 images/s
+[05/23 17:35:19] ppdet.engine INFO: Epoch: [0] [40/80] learning_rate: 0.000004 loss: 0.141435 eta: 0:00:12 batch_cost: 0.2671 data_cost: 0.0002 ips: 7.4887 images/s
+[05/23 17:35:20] ppdet.engine INFO: Epoch: [0] [41/80] learning_rate: 0.000004 loss: 0.141941 eta: 0:00:12 batch_cost: 0.2753 data_cost: 0.0002 ips: 7.2644 images/s
+[05/23 17:35:20] ppdet.engine INFO: Epoch: [0] [42/80] learning_rate: 0.000004 loss: 0.115594 eta: 0:00:12 batch_cost: 0.2753 data_cost: 0.0002 ips: 7.2653 images/s
+[05/23 17:35:20] ppdet.engine INFO: Epoch: [0] [43/80] learning_rate: 0.000004 loss: 0.129177 eta: 0:00:11 batch_cost: 0.2636 data_cost: 0.0002 ips: 7.5880 images/s
+[05/23 17:35:20] ppdet.engine INFO: Epoch: [0] [44/80] learning_rate: 0.000004 loss: 0.077023 eta: 0:00:11 batch_cost: 0.2844 data_cost: 0.0002 ips: 7.0314 images/s
+[05/23 17:35:21] ppdet.engine INFO: Epoch: [0] [45/80] learning_rate: 0.000005 loss: 0.142782 eta: 0:00:11 batch_cost: 0.3028 data_cost: 0.0002 ips: 6.6053 images/s
+[05/23 17:35:21] ppdet.engine INFO: Epoch: [0] [46/80] learning_rate: 0.000005 loss: 0.142605 eta: 0:00:10 batch_cost: 0.2807 data_cost: 0.0002 ips: 7.1247 images/s
+[05/23 17:35:21] ppdet.engine INFO: Epoch: [0] [47/80] learning_rate: 0.000005 loss: 0.142780 eta: 0:00:10 batch_cost: 0.2935 data_cost: 0.0002 ips: 6.8143 images/s
+[05/23 17:35:22] ppdet.engine INFO: Epoch: [0] [48/80] learning_rate: 0.000005 loss: 0.086765 eta: 0:00:10 batch_cost: 0.2737 data_cost: 0.0002 ips: 7.3080 images/s
+[05/23 17:35:22] ppdet.engine INFO: Epoch: [0] [49/80] learning_rate: 0.000005 loss: 0.103218 eta: 0:00:09 batch_cost: 0.2667 data_cost: 0.0002 ips: 7.4993 images/s
+[05/23 17:35:22] ppdet.engine INFO: Epoch: [0] [50/80] learning_rate: 0.000005 loss: 0.131317 eta: 0:00:09 batch_cost: 0.2891 data_cost: 0.0002 ips: 6.9172 images/s
+[05/23 17:35:22] ppdet.engine INFO: Epoch: [0] [51/80] learning_rate: 0.000005 loss: 0.156374 eta: 0:00:09 batch_cost: 0.2978 data_cost: 0.0004 ips: 6.7150 images/s
+[05/23 17:35:23] ppdet.engine INFO: Epoch: [0] [52/80] learning_rate: 0.000005 loss: 0.156383 eta: 0:00:08 batch_cost: 0.2913 data_cost: 0.0002 ips: 6.8649 images/s
+[05/23 17:35:23] ppdet.engine INFO: Epoch: [0] [53/80] learning_rate: 0.000005 loss: 0.118901 eta: 0:00:08 batch_cost: 0.2890 data_cost: 0.0002 ips: 6.9194 images/s
+[05/23 17:35:23] ppdet.engine INFO: Epoch: [0] [54/80] learning_rate: 0.000005 loss: 0.064333 eta: 0:00:08 batch_cost: 0.2938 data_cost: 0.0002 ips: 6.8065 images/s
+[05/23 17:35:24] ppdet.engine INFO: Epoch: [0] [55/80] learning_rate: 0.000006 loss: 0.115588 eta: 0:00:07 batch_cost: 0.3089 data_cost: 0.0002 ips: 6.4751 images/s
+[05/23 17:35:24] ppdet.engine INFO: Epoch: [0] [56/80] learning_rate: 0.000006 loss: 0.163191 eta: 0:00:07 batch_cost: 0.2863 data_cost: 0.0002 ips: 6.9847 images/s
+[05/23 17:35:24] ppdet.engine INFO: Epoch: [0] [57/80] learning_rate: 0.000006 loss: 0.108793 eta: 0:00:07 batch_cost: 0.3041 data_cost: 0.0002 ips: 6.5772 images/s
+[05/23 17:35:24] ppdet.engine INFO: Epoch: [0] [58/80] learning_rate: 0.000006 loss: 0.158811 eta: 0:00:06 batch_cost: 0.3303 data_cost: 0.0002 ips: 6.0552 images/s
+[05/23 17:35:25] ppdet.engine INFO: Epoch: [0] [59/80] learning_rate: 0.000006 loss: 0.074792 eta: 0:00:06 batch_cost: 0.3307 data_cost: 0.0002 ips: 6.0469 images/s
+[05/23 17:35:25] ppdet.engine INFO: Epoch: [0] [60/80] learning_rate: 0.000006 loss: 0.142770 eta: 0:00:06 batch_cost: 0.3062 data_cost: 0.0003 ips: 6.5306 images/s
+[05/23 17:35:25] ppdet.engine INFO: Epoch: [0] [61/80] learning_rate: 0.000006 loss: 0.115595 eta: 0:00:05 batch_cost: 0.2880 data_cost: 0.0002 ips: 6.9447 images/s
+[05/23 17:35:26] ppdet.engine INFO: Epoch: [0] [62/80] learning_rate: 0.000006 loss: 0.088384 eta: 0:00:05 batch_cost: 0.2860 data_cost: 0.0003 ips: 6.9918 images/s
+[05/23 17:35:26] ppdet.engine INFO: Epoch: [0] [63/80] learning_rate: 0.000006 loss: 0.135978 eta: 0:00:05 batch_cost: 0.2858 data_cost: 0.0002 ips: 6.9980 images/s
+[05/23 17:35:26] ppdet.engine INFO: Epoch: [0] [64/80] learning_rate: 0.000006 loss: 0.163191 eta: 0:00:04 batch_cost: 0.3094 data_cost: 0.0002 ips: 6.4632 images/s
+[05/23 17:35:27] ppdet.engine INFO: Epoch: [0] [65/80] learning_rate: 0.000007 loss: 0.043720 eta: 0:00:04 batch_cost: 0.2835 data_cost: 0.0002 ips: 7.0536 images/s
+[05/23 17:35:27] ppdet.engine INFO: Epoch: [0] [66/80] learning_rate: 0.000007 loss: 0.149584 eta: 0:00:04 batch_cost: 0.3143 data_cost: 0.0002 ips: 6.3634 images/s
+[05/23 17:35:27] ppdet.engine INFO: Epoch: [0] [67/80] learning_rate: 0.000007 loss: 0.125349 eta: 0:00:04 batch_cost: 0.3199 data_cost: 0.0002 ips: 6.2518 images/s
+[05/23 17:35:28] ppdet.engine INFO: Epoch: [0] [68/80] learning_rate: 0.000007 loss: 0.142766 eta: 0:00:03 batch_cost: 0.3374 data_cost: 0.0002 ips: 5.9278 images/s
+[05/23 17:35:28] ppdet.engine INFO: Epoch: [0] [69/80] learning_rate: 0.000007 loss: 0.126208 eta: 0:00:03 batch_cost: 0.3493 data_cost: 0.0002 ips: 5.7254 images/s
+[05/23 17:35:28] ppdet.engine INFO: Epoch: [0] [70/80] learning_rate: 0.000007 loss: 0.105783 eta: 0:00:03 batch_cost: 0.3046 data_cost: 0.0002 ips: 6.5655 images/s
+[05/23 17:35:29] ppdet.engine INFO: Epoch: [0] [71/80] learning_rate: 0.000007 loss: 0.125849 eta: 0:00:02 batch_cost: 0.2981 data_cost: 0.0002 ips: 6.7095 images/s
+[05/23 17:35:29] ppdet.engine INFO: Epoch: [0] [72/80] learning_rate: 0.000007 loss: 0.125766 eta: 0:00:02 batch_cost: 0.3110 data_cost: 0.0002 ips: 6.4315 images/s
+[05/23 17:35:29] ppdet.engine INFO: Epoch: [0] [73/80] learning_rate: 0.000007 loss: 0.108778 eta: 0:00:02 batch_cost: 0.3051 data_cost: 0.0002 ips: 6.5553 images/s
+[05/23 17:35:29] ppdet.engine INFO: Epoch: [0] [74/80] learning_rate: 0.000007 loss: 0.116076 eta: 0:00:01 batch_cost: 0.2870 data_cost: 0.0002 ips: 6.9686 images/s
+[05/23 17:35:30] ppdet.engine INFO: Epoch: [0] [75/80] learning_rate: 0.000008 loss: 0.092191 eta: 0:00:01 batch_cost: 0.3573 data_cost: 0.0002 ips: 5.5970 images/s
+[05/23 17:35:30] ppdet.engine INFO: Epoch: [0] [76/80] learning_rate: 0.000008 loss: 0.147353 eta: 0:00:01 batch_cost: 0.2963 data_cost: 0.0002 ips: 6.7498 images/s
+[05/23 17:35:31] ppdet.engine INFO: Epoch: [0] [77/80] learning_rate: 0.000008 loss: 0.115577 eta: 0:00:00 batch_cost: 0.4039 data_cost: 0.0002 ips: 4.9511 images/s
+[05/23 17:35:31] ppdet.engine INFO: Epoch: [0] [78/80] learning_rate: 0.000008 loss: 0.085389 eta: 0:00:00 batch_cost: 0.3047 data_cost: 0.0002 ips: 6.5634 images/s
+[05/23 17:35:31] ppdet.engine INFO: Epoch: [0] [79/80] learning_rate: 0.000008 loss: 0.126178 eta: 0:00:00 batch_cost: 0.2999 data_cost: 0.0002 ips: 6.6688 images/s
+[05/23 17:35:34] ppdet.utils.checkpoint INFO: Save checkpoint: ./test_tipc/output/norm_train_gpus_0_autocast_null/simdr_hrnet_w48_384x288
+ Run successfully with command - python3.7 tools/train.py -c configs/keypoint/simdr/hrnet_w48_384x288.yml -o LearningRate.base_lr=0.0001 log_iter=1 use_gpu=True save_dir=./test_tipc/output/norm_train_gpus_0_autocast_null epoch=1   TrainReader.batch_size=2 filename=simdr_hrnet_w48_384x288    !  
+/opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/paddle/tensor/creation.py:130: DeprecationWarning: `np.object` is a deprecated alias for the builtin `object`. To silence this warning, use `object` by itself. Doing this will not modify any behavior and is safe. 
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  if data.dtype == np.object:
+Warning: import ppdet from source directory without installing, run 'python setup.py install' to install ppdet firstly
+W0523 17:35:39.406345 21609 device_context.cc:447] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 11.2, Runtime API Version: 10.1
+W0523 17:35:39.410471 21609 device_context.cc:465] device: 0, cuDNN Version: 7.6.
+loading annotations into memory...
+Done (t=0.00s)
+creating index...
+index created!
+loading annotations into memory...
+Done (t=0.00s)
+creating index...
+index created!
+[05/23 17:35:43] ppdet.utils.checkpoint INFO: Finish loading model weights: ./test_tipc/output/norm_train_gpus_0_autocast_null/simdr_hrnet_w48_384x288/model_final.pdparams
+[05/23 17:35:44] ppdet.engine INFO: Eval iter: 0
+[05/23 17:35:44] ppdet.metrics.keypoint_metrics INFO: The keypoint result is saved to output/keypoints_results.json.
+Loading and preparing results...
+DONE (t=0.00s)
+creating index...
+index created!
+Running per image evaluation...
+Evaluate annotation type *keypoints*
+DONE (t=0.01s).
+Accumulating evaluation results...
+DONE (t=0.00s).
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets= 20 ] = 0.000
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets= 20 ] = 0.000
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets= 20 ] = 0.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets= 20 ] = 0.000
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets= 20 ] = 0.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets= 20 ] = 0.000
+ Average Recall     (AR) @[ IoU=0.50      | area=   all | maxDets= 20 ] = 0.000
+ Average Recall     (AR) @[ IoU=0.75      | area=   all | maxDets= 20 ] = 0.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets= 20 ] = 0.000
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets= 20 ] = 0.000
+| AP | Ap .5 | AP .75 | AP (M) | AP (L) | AR | AR .5 | AR .75 | AR (M) | AR (L) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 0.000 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 |
+[05/23 17:35:44] ppdet.engine INFO: Total sample number: 14, averge FPS: 35.51296169068055
+ Run successfully with command - python3.7 tools/eval.py -c configs/keypoint/simdr/hrnet_w48_384x288.yml -o weights=./test_tipc/output/norm_train_gpus_0_autocast_null/simdr_hrnet_w48_384x288/model_final.pdparams use_gpu=True  !  
+/opt/conda/envs/python35-paddle120-env/lib/python3.7/site-packages/paddle/tensor/creation.py:130: DeprecationWarning: `np.object` is a deprecated alias for the builtin `object`. To silence this warning, use `object` by itself. Doing this will not modify any behavior and is safe. 
+Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+  if data.dtype == np.object:
+Warning: import ppdet from source directory without installing, run 'python setup.py install' to install ppdet firstly
+[05/23 17:35:52] ppdet.utils.checkpoint INFO: Finish loading model weights: ./test_tipc/output/norm_train_gpus_0_autocast_null/simdr_hrnet_w48_384x288/model_final.pdparams
+[05/23 17:35:52] ppdet.engine INFO: Export inference config file to ./test_tipc/output/norm_train_gpus_0_autocast_null/simdr_hrnet_w48_384x288/infer_cfg.yml
+(-1, 17, 432)
+(-1, 17, 576)
+Mon May 23 17:35:57 Dynamic-to-Static WARNING: Output of traced function contains non-tensor type values: [<class 'NoneType'>]. Currently, We don't support to update them while training and will return what we first saw. Please try to return them as tensor.
+W0523 17:36:03.371332 21689 device_context.cc:447] Please NOTE: device: 0, GPU Compute Capability: 7.0, Driver API Version: 11.2, Runtime API Version: 10.1
+W0523 17:36:03.371392 21689 device_context.cc:465] device: 0, cuDNN Version: 7.6.
+[05/23 17:36:12] ppdet.engine INFO: Export model and saved in ./test_tipc/output/norm_train_gpus_0_autocast_null/simdr_hrnet_w48_384x288
+ Run successfully with command - python3.7 tools/export_model.py -c configs/keypoint/simdr/hrnet_w48_384x288.yml -o weights=./test_tipc/output/norm_train_gpus_0_autocast_null/simdr_hrnet_w48_384x288/model_final.pdparams filename=simdr_hrnet_w48_384x288 --output_dir=./test_tipc/output/norm_train_gpus_0_autocast_null !  
+2022-05-23 17:36:25,482 - benchmark_utils - INFO - Paddle Inference benchmark log will be saved to /home/aistudio/PaddleDetection/deploy/python/../../output/simdr_hrnet_w48_384x288.log
+2022-05-23 17:36:25,482 - benchmark_utils - INFO - 
+
+2022-05-23 17:36:25,482 - benchmark_utils - INFO - ---------------------- Paddle info ----------------------
+2022-05-23 17:36:25,482 - benchmark_utils - INFO - [KeyPoint] paddle_version: 2.2.2
+2022-05-23 17:36:25,482 - benchmark_utils - INFO - [KeyPoint] paddle_commit: b031c389938bfa15e15bb20494c76f86289d77b0
+2022-05-23 17:36:25,482 - benchmark_utils - INFO - [KeyPoint] paddle_branch: HEAD
+2022-05-23 17:36:25,482 - benchmark_utils - INFO - [KeyPoint] log_api_version: 1.0.3
+2022-05-23 17:36:25,482 - benchmark_utils - INFO - ----------------------- Conf info -----------------------
+2022-05-23 17:36:25,482 - benchmark_utils - INFO - [KeyPoint] runtime_device: gpu
+2022-05-23 17:36:25,482 - benchmark_utils - INFO - [KeyPoint] ir_optim: True
+2022-05-23 17:36:25,482 - benchmark_utils - INFO - [KeyPoint] enable_memory_optim: True
+2022-05-23 17:36:25,482 - benchmark_utils - INFO - [KeyPoint] enable_tensorrt: False
+2022-05-23 17:36:25,482 - benchmark_utils - INFO - [KeyPoint] enable_mkldnn: False
+2022-05-23 17:36:25,482 - benchmark_utils - INFO - [KeyPoint] cpu_math_library_num_threads: 1
+2022-05-23 17:36:25,482 - benchmark_utils - INFO - ----------------------- Model info ----------------------
+2022-05-23 17:36:25,482 - benchmark_utils - INFO - [KeyPoint] model_name: simdr_hrnet_w48_384x288
+2022-05-23 17:36:25,483 - benchmark_utils - INFO - [KeyPoint] precision: paddle
+2022-05-23 17:36:25,483 - benchmark_utils - INFO - ----------------------- Data info -----------------------
+2022-05-23 17:36:25,483 - benchmark_utils - INFO - [KeyPoint] batch_size: 1
+2022-05-23 17:36:25,483 - benchmark_utils - INFO - [KeyPoint] input_shape: dynamic_shape
+2022-05-23 17:36:25,483 - benchmark_utils - INFO - [KeyPoint] data_num: 2
+2022-05-23 17:36:25,483 - benchmark_utils - INFO - ----------------------- Perf info -----------------------
+2022-05-23 17:36:25,483 - benchmark_utils - INFO - [KeyPoint] cpu_rss(MB): 1393, cpu_vms: 0, cpu_shared_mb: 0, cpu_dirty_mb: 0, cpu_util: 0%
+2022-05-23 17:36:25,483 - benchmark_utils - INFO - [KeyPoint] gpu_rss(MB): 698, gpu_util: 14.0%, gpu_mem_util: 0%
+2022-05-23 17:36:25,483 - benchmark_utils - INFO - [KeyPoint] total time spent(s): 0.0501
+2022-05-23 17:36:25,483 - benchmark_utils - INFO - [KeyPoint] preprocess_time(ms): 12.3, inference_time(ms): 10.4, postprocess_time(ms): 2.3
+-----------  Running Arguments -----------
+action_file: None
+batch_size: 2
+camera_id: -1
+cpu_threads: 1
+device: gpu
+enable_mkldnn: False
+enable_mkldnn_bfloat16: False
+image_dir: ./dataset/coco/test2017/
+image_file: None
+model_dir: ./output_inference/simdr_hrnet_w48_384x288
+output_dir: output
+random_pad: False
+reid_batch_size: 50
+reid_model_dir: None
+run_benchmark: True
+run_mode: paddle
+save_images: False
+save_mot_txt_per_img: False
+save_mot_txts: False
+scaled: False
+threshold: 0.5
+tracker_config: None
+trt_calib_mode: False
+trt_max_shape: 1280
+trt_min_shape: 1
+trt_opt_shape: 640
+use_dark: True
+use_gpu: False
+video_file: None
+window_size: 50
+------------------------------------------
+-----------  Model Configuration -----------
+Model Arch: HRNetSimDR
+Transform Order: 
+--transform op: TopDownEvalAffine
+--transform op: NormalizeImage
+--transform op: Permute
+--------------------------------------------
+Found 2 inference images in total.
+Test iter 0
+ Run successfully with command - python3.7 ./deploy/python/keypoint_infer.py --device=gpu --run_mode=paddle --model_dir=./output_inference/simdr_hrnet_w48_384x288 --batch_size=2 --image_dir=./dataset/coco/test2017/ --run_benchmark=True   > ./test_tipc/output/python_infer_gpu_precision_paddle_batchsize_2.log 2>&1 !  
+2022-05-23 17:37:05,119 - benchmark_utils - INFO - Paddle Inference benchmark log will be saved to /home/aistudio/PaddleDetection/deploy/python/../../output/simdr_hrnet_w48_384x288.log
+2022-05-23 17:37:05,120 - benchmark_utils - INFO - 
+
+2022-05-23 17:37:05,120 - benchmark_utils - INFO - ---------------------- Paddle info ----------------------
+2022-05-23 17:37:05,120 - benchmark_utils - INFO - [KeyPoint] paddle_version: 2.2.2
+2022-05-23 17:37:05,120 - benchmark_utils - INFO - [KeyPoint] paddle_commit: b031c389938bfa15e15bb20494c76f86289d77b0
+2022-05-23 17:37:05,120 - benchmark_utils - INFO - [KeyPoint] paddle_branch: HEAD
+2022-05-23 17:37:05,120 - benchmark_utils - INFO - [KeyPoint] log_api_version: 1.0.3
+2022-05-23 17:37:05,120 - benchmark_utils - INFO - ----------------------- Conf info -----------------------
+2022-05-23 17:37:05,120 - benchmark_utils - INFO - [KeyPoint] runtime_device: cpu
+2022-05-23 17:37:05,120 - benchmark_utils - INFO - [KeyPoint] ir_optim: True
+2022-05-23 17:37:05,120 - benchmark_utils - INFO - [KeyPoint] enable_memory_optim: True
+2022-05-23 17:37:05,120 - benchmark_utils - INFO - [KeyPoint] enable_tensorrt: False
+2022-05-23 17:37:05,120 - benchmark_utils - INFO - [KeyPoint] enable_mkldnn: True
+2022-05-23 17:37:05,120 - benchmark_utils - INFO - [KeyPoint] cpu_math_library_num_threads: 1
+2022-05-23 17:37:05,120 - benchmark_utils - INFO - ----------------------- Model info ----------------------
+2022-05-23 17:37:05,120 - benchmark_utils - INFO - [KeyPoint] model_name: simdr_hrnet_w48_384x288
+2022-05-23 17:37:05,120 - benchmark_utils - INFO - [KeyPoint] precision: paddle
+2022-05-23 17:37:05,120 - benchmark_utils - INFO - ----------------------- Data info -----------------------
+2022-05-23 17:37:05,120 - benchmark_utils - INFO - [KeyPoint] batch_size: 1
+2022-05-23 17:37:05,120 - benchmark_utils - INFO - [KeyPoint] input_shape: dynamic_shape
+2022-05-23 17:37:05,120 - benchmark_utils - INFO - [KeyPoint] data_num: 2
+2022-05-23 17:37:05,120 - benchmark_utils - INFO - ----------------------- Perf info -----------------------
+2022-05-23 17:37:05,121 - benchmark_utils - INFO - [KeyPoint] cpu_rss(MB): 621, cpu_vms: 0, cpu_shared_mb: 0, cpu_dirty_mb: 0, cpu_util: 0%
+2022-05-23 17:37:05,121 - benchmark_utils - INFO - [KeyPoint] gpu_rss(MB): 1, gpu_util: 0.0%, gpu_mem_util: 0%
+2022-05-23 17:37:05,121 - benchmark_utils - INFO - [KeyPoint] total time spent(s): 1.3005
+2022-05-23 17:37:05,121 - benchmark_utils - INFO - [KeyPoint] preprocess_time(ms): 22.2, inference_time(ms): 625.7, postprocess_time(ms): 2.4
+-----------  Running Arguments -----------
+action_file: None
+batch_size: 2
+camera_id: -1
+cpu_threads: 1
+device: cpu
+enable_mkldnn: True
+enable_mkldnn_bfloat16: False
+image_dir: ./dataset/coco/test2017/
+image_file: None
+model_dir: ./output_inference/simdr_hrnet_w48_384x288
+output_dir: output
+random_pad: False
+reid_batch_size: 50
+reid_model_dir: None
+run_benchmark: True
+run_mode: paddle
+save_images: False
+save_mot_txt_per_img: False
+save_mot_txts: False
+scaled: False
+threshold: 0.5
+tracker_config: None
+trt_calib_mode: False
+trt_max_shape: 1280
+trt_min_shape: 1
+trt_opt_shape: 640
+use_dark: True
+use_gpu: False
+video_file: None
+window_size: 50
+------------------------------------------
+-----------  Model Configuration -----------
+Model Arch: HRNetSimDR
+Transform Order: 
+--transform op: TopDownEvalAffine
+--transform op: NormalizeImage
+--transform op: Permute
+--------------------------------------------
+Found 2 inference images in total.
+Test iter 0
+ Run successfully with command - python3.7 ./deploy/python/keypoint_infer.py --device=cpu --enable_mkldnn=True --cpu_threads=1 --model_dir=./output_inference/simdr_hrnet_w48_384x288 --batch_size=2 --image_dir=./dataset/coco/test2017/ --run_benchmark=True   > ./test_tipc/output/python_infer_cpu_usemkldnn_True_threads_1_precision_fluid_batchsize_2.log 2>&1 !  
+2022-05-23 17:37:37,853 - benchmark_utils - INFO - Paddle Inference benchmark log will be saved to /home/aistudio/PaddleDetection/deploy/python/../../output/simdr_hrnet_w48_384x288.log
+2022-05-23 17:37:37,854 - benchmark_utils - INFO - 
+
+2022-05-23 17:37:37,854 - benchmark_utils - INFO - ---------------------- Paddle info ----------------------
+2022-05-23 17:37:37,854 - benchmark_utils - INFO - [KeyPoint] paddle_version: 2.2.2
+2022-05-23 17:37:37,854 - benchmark_utils - INFO - [KeyPoint] paddle_commit: b031c389938bfa15e15bb20494c76f86289d77b0
+2022-05-23 17:37:37,854 - benchmark_utils - INFO - [KeyPoint] paddle_branch: HEAD
+2022-05-23 17:37:37,854 - benchmark_utils - INFO - [KeyPoint] log_api_version: 1.0.3
+2022-05-23 17:37:37,854 - benchmark_utils - INFO - ----------------------- Conf info -----------------------
+2022-05-23 17:37:37,854 - benchmark_utils - INFO - [KeyPoint] runtime_device: cpu
+2022-05-23 17:37:37,854 - benchmark_utils - INFO - [KeyPoint] ir_optim: True
+2022-05-23 17:37:37,854 - benchmark_utils - INFO - [KeyPoint] enable_memory_optim: True
+2022-05-23 17:37:37,854 - benchmark_utils - INFO - [KeyPoint] enable_tensorrt: False
+2022-05-23 17:37:37,854 - benchmark_utils - INFO - [KeyPoint] enable_mkldnn: True
+2022-05-23 17:37:37,854 - benchmark_utils - INFO - [KeyPoint] cpu_math_library_num_threads: 6
+2022-05-23 17:37:37,854 - benchmark_utils - INFO - ----------------------- Model info ----------------------
+2022-05-23 17:37:37,854 - benchmark_utils - INFO - [KeyPoint] model_name: simdr_hrnet_w48_384x288
+2022-05-23 17:37:37,854 - benchmark_utils - INFO - [KeyPoint] precision: paddle
+2022-05-23 17:37:37,854 - benchmark_utils - INFO - ----------------------- Data info -----------------------
+2022-05-23 17:37:37,854 - benchmark_utils - INFO - [KeyPoint] batch_size: 1
+2022-05-23 17:37:37,854 - benchmark_utils - INFO - [KeyPoint] input_shape: dynamic_shape
+2022-05-23 17:37:37,854 - benchmark_utils - INFO - [KeyPoint] data_num: 2
+2022-05-23 17:37:37,854 - benchmark_utils - INFO - ----------------------- Perf info -----------------------
+2022-05-23 17:37:37,854 - benchmark_utils - INFO - [KeyPoint] cpu_rss(MB): 626, cpu_vms: 0, cpu_shared_mb: 0, cpu_dirty_mb: 0, cpu_util: 0%
+2022-05-23 17:37:37,854 - benchmark_utils - INFO - [KeyPoint] gpu_rss(MB): 1, gpu_util: 0.0%, gpu_mem_util: 0%
+2022-05-23 17:37:37,855 - benchmark_utils - INFO - [KeyPoint] total time spent(s): 0.976
+2022-05-23 17:37:37,855 - benchmark_utils - INFO - [KeyPoint] preprocess_time(ms): 10.8, inference_time(ms): 474.9, postprocess_time(ms): 2.2
+-----------  Running Arguments -----------
+action_file: None
+batch_size: 2
+camera_id: -1
+cpu_threads: 6
+device: cpu
+enable_mkldnn: True
+enable_mkldnn_bfloat16: False
+image_dir: ./dataset/coco/test2017/
+image_file: None
+model_dir: ./output_inference/simdr_hrnet_w48_384x288
+output_dir: output
+random_pad: False
+reid_batch_size: 50
+reid_model_dir: None
+run_benchmark: True
+run_mode: paddle
+save_images: False
+save_mot_txt_per_img: False
+save_mot_txts: False
+scaled: False
+threshold: 0.5
+tracker_config: None
+trt_calib_mode: False
+trt_max_shape: 1280
+trt_min_shape: 1
+trt_opt_shape: 640
+use_dark: True
+use_gpu: False
+video_file: None
+window_size: 50
+------------------------------------------
+-----------  Model Configuration -----------
+Model Arch: HRNetSimDR
+Transform Order: 
+--transform op: TopDownEvalAffine
+--transform op: NormalizeImage
+--transform op: Permute
+--------------------------------------------
+Found 2 inference images in total.
+Test iter 0
+ Run successfully with command - python3.7 ./deploy/python/keypoint_infer.py --device=cpu --enable_mkldnn=True --cpu_threads=6 --model_dir=./output_inference/simdr_hrnet_w48_384x288 --batch_size=2 --image_dir=./dataset/coco/test2017/ --run_benchmark=True   > ./test_tipc/output/python_infer_cpu_usemkldnn_True_threads_6_precision_fluid_batchsize_2.log 2>&1 !  
+2022-05-23 17:38:39,478 - benchmark_utils - INFO - Paddle Inference benchmark log will be saved to /home/aistudio/PaddleDetection/deploy/python/../../output/simdr_hrnet_w48_384x288.log
+2022-05-23 17:38:39,478 - benchmark_utils - INFO - 
+
+2022-05-23 17:38:39,478 - benchmark_utils - INFO - ---------------------- Paddle info ----------------------
+2022-05-23 17:38:39,479 - benchmark_utils - INFO - [KeyPoint] paddle_version: 2.2.2
+2022-05-23 17:38:39,479 - benchmark_utils - INFO - [KeyPoint] paddle_commit: b031c389938bfa15e15bb20494c76f86289d77b0
+2022-05-23 17:38:39,479 - benchmark_utils - INFO - [KeyPoint] paddle_branch: HEAD
+2022-05-23 17:38:39,479 - benchmark_utils - INFO - [KeyPoint] log_api_version: 1.0.3
+2022-05-23 17:38:39,479 - benchmark_utils - INFO - ----------------------- Conf info -----------------------
+2022-05-23 17:38:39,479 - benchmark_utils - INFO - [KeyPoint] runtime_device: cpu
+2022-05-23 17:38:39,479 - benchmark_utils - INFO - [KeyPoint] ir_optim: True
+2022-05-23 17:38:39,479 - benchmark_utils - INFO - [KeyPoint] enable_memory_optim: True
+2022-05-23 17:38:39,479 - benchmark_utils - INFO - [KeyPoint] enable_tensorrt: False
+2022-05-23 17:38:39,479 - benchmark_utils - INFO - [KeyPoint] enable_mkldnn: False
+2022-05-23 17:38:39,479 - benchmark_utils - INFO - [KeyPoint] cpu_math_library_num_threads: 1
+2022-05-23 17:38:39,479 - benchmark_utils - INFO - ----------------------- Model info ----------------------
+2022-05-23 17:38:39,479 - benchmark_utils - INFO - [KeyPoint] model_name: simdr_hrnet_w48_384x288
+2022-05-23 17:38:39,479 - benchmark_utils - INFO - [KeyPoint] precision: paddle
+2022-05-23 17:38:39,479 - benchmark_utils - INFO - ----------------------- Data info -----------------------
+2022-05-23 17:38:39,479 - benchmark_utils - INFO - [KeyPoint] batch_size: 1
+2022-05-23 17:38:39,479 - benchmark_utils - INFO - [KeyPoint] input_shape: dynamic_shape
+2022-05-23 17:38:39,479 - benchmark_utils - INFO - [KeyPoint] data_num: 2
+2022-05-23 17:38:39,479 - benchmark_utils - INFO - ----------------------- Perf info -----------------------
+2022-05-23 17:38:39,479 - benchmark_utils - INFO - [KeyPoint] cpu_rss(MB): 423, cpu_vms: 0, cpu_shared_mb: 0, cpu_dirty_mb: 0, cpu_util: 0%
+2022-05-23 17:38:39,479 - benchmark_utils - INFO - [KeyPoint] gpu_rss(MB): 1, gpu_util: 0.0%, gpu_mem_util: 0%
+2022-05-23 17:38:39,479 - benchmark_utils - INFO - [KeyPoint] total time spent(s): 2.8144
+2022-05-23 17:38:39,479 - benchmark_utils - INFO - [KeyPoint] preprocess_time(ms): 15.5, inference_time(ms): 1389.3, postprocess_time(ms): 2.4
+-----------  Running Arguments -----------
+action_file: None
+batch_size: 2
+camera_id: -1
+cpu_threads: 1
+device: cpu
+enable_mkldnn: False
+enable_mkldnn_bfloat16: False
+image_dir: ./dataset/coco/test2017/
+image_file: None
+model_dir: ./output_inference/simdr_hrnet_w48_384x288
+output_dir: output
+random_pad: False
+reid_batch_size: 50
+reid_model_dir: None
+run_benchmark: True
+run_mode: paddle
+save_images: False
+save_mot_txt_per_img: False
+save_mot_txts: False
+scaled: False
+threshold: 0.5
+tracker_config: None
+trt_calib_mode: False
+trt_max_shape: 1280
+trt_min_shape: 1
+trt_opt_shape: 640
+use_dark: True
+use_gpu: False
+video_file: None
+window_size: 50
+------------------------------------------
+-----------  Model Configuration -----------
+Model Arch: HRNetSimDR
+Transform Order: 
+--transform op: TopDownEvalAffine
+--transform op: NormalizeImage
+--transform op: Permute
+--------------------------------------------
+Found 2 inference images in total.
+Test iter 0
+ Run successfully with command - python3.7 ./deploy/python/keypoint_infer.py --device=cpu --enable_mkldnn=False --cpu_threads=1 --model_dir=./output_inference/simdr_hrnet_w48_384x288 --batch_size=2 --image_dir=./dataset/coco/test2017/ --run_benchmark=True   > ./test_tipc/output/python_infer_cpu_usemkldnn_False_threads_1_precision_fluid_batchsize_2.log 2>&1 !  
+2022-05-23 17:41:03,812 - benchmark_utils - INFO - Paddle Inference benchmark log will be saved to /home/aistudio/PaddleDetection/deploy/python/../../output/simdr_hrnet_w48_384x288.log
+2022-05-23 17:41:03,813 - benchmark_utils - INFO - 
+
+2022-05-23 17:41:03,813 - benchmark_utils - INFO - ---------------------- Paddle info ----------------------
+2022-05-23 17:41:03,813 - benchmark_utils - INFO - [KeyPoint] paddle_version: 2.2.2
+2022-05-23 17:41:03,813 - benchmark_utils - INFO - [KeyPoint] paddle_commit: b031c389938bfa15e15bb20494c76f86289d77b0
+2022-05-23 17:41:03,813 - benchmark_utils - INFO - [KeyPoint] paddle_branch: HEAD
+2022-05-23 17:41:03,813 - benchmark_utils - INFO - [KeyPoint] log_api_version: 1.0.3
+2022-05-23 17:41:03,813 - benchmark_utils - INFO - ----------------------- Conf info -----------------------
+2022-05-23 17:41:03,813 - benchmark_utils - INFO - [KeyPoint] runtime_device: cpu
+2022-05-23 17:41:03,813 - benchmark_utils - INFO - [KeyPoint] ir_optim: True
+2022-05-23 17:41:03,813 - benchmark_utils - INFO - [KeyPoint] enable_memory_optim: True
+2022-05-23 17:41:03,813 - benchmark_utils - INFO - [KeyPoint] enable_tensorrt: False
+2022-05-23 17:41:03,813 - benchmark_utils - INFO - [KeyPoint] enable_mkldnn: False
+2022-05-23 17:41:03,813 - benchmark_utils - INFO - [KeyPoint] cpu_math_library_num_threads: 6
+2022-05-23 17:41:03,813 - benchmark_utils - INFO - ----------------------- Model info ----------------------
+2022-05-23 17:41:03,813 - benchmark_utils - INFO - [KeyPoint] model_name: simdr_hrnet_w48_384x288
+2022-05-23 17:41:03,813 - benchmark_utils - INFO - [KeyPoint] precision: paddle
+2022-05-23 17:41:03,813 - benchmark_utils - INFO - ----------------------- Data info -----------------------
+2022-05-23 17:41:03,813 - benchmark_utils - INFO - [KeyPoint] batch_size: 1
+2022-05-23 17:41:03,813 - benchmark_utils - INFO - [KeyPoint] input_shape: dynamic_shape
+2022-05-23 17:41:03,813 - benchmark_utils - INFO - [KeyPoint] data_num: 2
+2022-05-23 17:41:03,813 - benchmark_utils - INFO - ----------------------- Perf info -----------------------
+2022-05-23 17:41:03,813 - benchmark_utils - INFO - [KeyPoint] cpu_rss(MB): 424, cpu_vms: 0, cpu_shared_mb: 0, cpu_dirty_mb: 0, cpu_util: 0%
+2022-05-23 17:41:03,813 - benchmark_utils - INFO - [KeyPoint] gpu_rss(MB): 1, gpu_util: 0.0%, gpu_mem_util: 0%
+2022-05-23 17:41:03,814 - benchmark_utils - INFO - [KeyPoint] total time spent(s): 6.5673
+2022-05-23 17:41:03,814 - benchmark_utils - INFO - [KeyPoint] preprocess_time(ms): 11.8, inference_time(ms): 3269.4, postprocess_time(ms): 2.4
+-----------  Running Arguments -----------
+action_file: None
+batch_size: 2
+camera_id: -1
+cpu_threads: 6
+device: cpu
+enable_mkldnn: False
+enable_mkldnn_bfloat16: False
+image_dir: ./dataset/coco/test2017/
+image_file: None
+model_dir: ./output_inference/simdr_hrnet_w48_384x288
+output_dir: output
+random_pad: False
+reid_batch_size: 50
+reid_model_dir: None
+run_benchmark: True
+run_mode: paddle
+save_images: False
+save_mot_txt_per_img: False
+save_mot_txts: False
+scaled: False
+threshold: 0.5
+tracker_config: None
+trt_calib_mode: False
+trt_max_shape: 1280
+trt_min_shape: 1
+trt_opt_shape: 640
+use_dark: True
+use_gpu: False
+video_file: None
+window_size: 50
+------------------------------------------
+-----------  Model Configuration -----------
+Model Arch: HRNetSimDR
+Transform Order: 
+--transform op: TopDownEvalAffine
+--transform op: NormalizeImage
+--transform op: Permute
+--------------------------------------------
+Found 2 inference images in total.
+Test iter 0
+ Run successfully with command - python3.7 ./deploy/python/keypoint_infer.py --device=cpu --enable_mkldnn=False --cpu_threads=6 --model_dir=./output_inference/simdr_hrnet_w48_384x288 --batch_size=2 --image_dir=./dataset/coco/test2017/ --run_benchmark=True   > ./test_tipc/output/python_infer_cpu_usemkldnn_False_threads_6_precision_fluid_batchsize_2.log 2>&1 !  
