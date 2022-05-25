@@ -1,5 +1,4 @@
-# DnCNN_Paddle
-SimDR: Is 2D Heatmap Even Necessary for Human Pose Estimation?
+# SimDR: Is 2D Heatmap Even Necessary for Human Pose Estimation?
 
 [官方源码](https://github.com/leeyegy/SimDR)
 
