@@ -24,7 +24,7 @@ COCO val HRNet-W32 256x192 keypint AP 76.7
 
 COCO val HRNet-W48 384x288 keypint AP 78.5
 
-[模型训练日志及权重 (提取码：isr6)](https://pan.baidu.com/s/1N84NEcnRGyjkwerWanz3Gw#isr6)
+[模型训练日志及权重 (提取码：0xgj)](https://pan.baidu.com/s/1VbYH8RyFlFw-vIRpxQQj9A#0xgj)
 ## 3. 数据集
 [COCO](https://cocodataset.org/#keypoints-2017)数据集的准备方式请参考[关键点数据准备](docs/tutorials/PrepareKeypointDataSet_cn.md)。
 
